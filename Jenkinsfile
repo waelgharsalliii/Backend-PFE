@@ -5,10 +5,11 @@ pipeline {
         stage('Checkout Git') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']],
-                userRemoteConfigs: [[url: 'git@github.com:waelgharsalliii/backend_App.git',
+                userRemoteConfigs: [[url: 'git@github.com:waelgharsalliii/Backend_PFE.git',
                                     credentialsId: 'Jenkins-git-ssh']]])                
             }
         }
+  
 
         
         
