@@ -20,7 +20,7 @@ pipeline {
                  withsonarQubeENV('sonar'){
                     sh 'npm run sonar'
                     
-                }    
+                } }   
             }  
 
         }
