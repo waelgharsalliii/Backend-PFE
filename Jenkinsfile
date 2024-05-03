@@ -15,7 +15,7 @@ pipeline {
 
         stage('sonarqube analysis') {
             steps {
-                nodejs (nodeJSInstallationName "NodeJs"){
+                nodejs ("NodeJs"){
                     sh 'npm install' // or 'yarn install' if you're using yarn
                   withSonarQubeEnivirment(sonar-scanner){
                     sh "npm run sonar:prepare"
