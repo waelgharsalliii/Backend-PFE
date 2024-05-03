@@ -1,5 +1,6 @@
 pipeline {
     agent any
+        tools {nodejs "node"}{
 
     stages {
         stage('Checkout Git') {
@@ -14,7 +15,6 @@ pipeline {
 
         stage('sonarqube analysis') {
             steps {
-                 tools {nodejs "node"}{
                 sh 'npm install' // or 'yarn install' if you're using yarn
                 withSonarQubeEnivirment(sonar){
                     sh "npm install sonar-scanner"
