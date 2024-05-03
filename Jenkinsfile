@@ -1,4 +1,4 @@
-JSpipeline {
+pipeline {
     agent any
        
 
