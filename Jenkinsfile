@@ -1,4 +1,4 @@
-pipeline {
+JSpipeline {
     agent any
        
 
@@ -15,7 +15,7 @@ pipeline {
 
         stage('sonarqube analysis') {
             steps {
-                nodejs ("NodeJs"){
+                nodejs (nodeJSInstallationName: 'NodeJs'){
                     sh 'npm install' // or 'yarn install' if you're using yarn
              
                     
