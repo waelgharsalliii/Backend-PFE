@@ -5,8 +5,8 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "test": "jest",
-    "coverage": "*./node_modules/.bin/nyc -r cobertura -r test-summary -r html npm test",
-    "coverage-lcov": "*./node_modules/.bin/nyc -r cobertura -r test-summary -r lcov npm test",
+    "coverage": "./node_modules/.bin/nyc -r cobertura -r test-summary -r html npm test",
+    "coverage-lcov": "./node_modules/.bin/nyc -r cobertura -r test-summary -r lcov npm test",
 
     "sonar": "sonar-scanner"
   },
