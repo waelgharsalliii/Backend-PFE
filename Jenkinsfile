@@ -20,6 +20,7 @@ pipeline {
                  withSonarQubeEnv('sonar'){
                      sh 'npm run sonar'
                      sh ' npm run test'
+                     sh 'npm run coverage-lcov'
                 } }   
             }  
 
