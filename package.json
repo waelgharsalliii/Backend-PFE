@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "test": "jest --coverage",
+    "coverage-lcov": "jest --coverage --coverageReporters='lcovonly'",
     "sonar": "sonar-scanner"
   },
   "dependencies": {
