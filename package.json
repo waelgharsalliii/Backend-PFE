@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "jest --coverage",
-    "coverage-lcov": "jest --coverage --coverageReporters='lcovonly'",
+    "test": "jest",
+    "coverage": "*./node_modules/.bin/nyc -r cobertura -r test-summary -r html npm test",
+    "coverage-lcov": "*./node_modules/.bin/nyc -r cobertura -r test-summary -r lcov npm test",
+
     "sonar": "sonar-scanner"
   },
   "dependencies": {
