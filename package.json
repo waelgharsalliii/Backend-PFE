@@ -7,7 +7,7 @@
     "test": "jest",
     "coverage": "./node_modules/.bin/nyc -r cobertura -r test-summary -r html npm test",
     "coverage-lcov": "./node_modules/.bin/nyc -r cobertura -r test-summary -r lcov npm test",
-    "build": "echo 'Running Build script'"
+    "build": "echo 'Running Build script'",
     "sonar": "sonar-scanner"
   },
   "dependencies": {
