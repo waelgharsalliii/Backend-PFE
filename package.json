@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "mocha",
+    "test": "jest",
     "coverage": "./node_modules/.bin/nyc -r cobertura -r test-summary -r html npm test",
     "coverage-lcov": "./node_modules/.bin/nyc -r cobertura -r test-summary -r lcov npm test",
     "build": "echo 'Running Build script'",
