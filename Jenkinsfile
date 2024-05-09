@@ -52,9 +52,9 @@ pipeline {
         }
         withCredentials([file(credentialsId: 'npmrc-cred', variable: 'npmrc')]) {
        // some block
-         sh "npm install --user-config $npmrc --loglevel verbose"  }
+         sh "npm install --user-config $npmrc --loglevel verbose"  
 
-         sh "npm publish --user-config $npmrc --loglevel verbose"  }
+         sh "npm publish --user-config $npmrc --loglevel verbose"  
 }
 // test sonarcloud
     }
