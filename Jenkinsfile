@@ -24,7 +24,7 @@
             }   
         }
         stage("publish"){
-                sh "npm publish"
+                sh "npm publish"}
 
 // test sonarcloud
     }
