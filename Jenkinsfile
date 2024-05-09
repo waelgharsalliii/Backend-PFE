@@ -18,16 +18,12 @@
                 }
             }
         }
-        stage("Build") {
+               stage('Build') {
             steps {
-                sh'npm run build'
-            }   
-        }
-        stage("publish"){
-         steps{
-                sh "npm publish"
-        }}
-
+                // Authenticate with the npm registry
+                sh 'npm adduser --registry=http://192.168.1.206:8081/repository/npm-hosted-repository/'
+                sh 'npm publish'
+            }}
 // test sonarcloud
     }
 }
