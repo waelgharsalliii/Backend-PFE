@@ -1,5 +1,5 @@
 
-        pipeline { 
+ pipeline { 
     agent any 
     stages { 
         stage('Checkout Git') { 
@@ -24,9 +24,9 @@
             }   
         }
         stage("publish"){
-                sh "npm publish"}
+                sh "npm publish"
+        }
 
 // test sonarcloud
     }
 }
-// test sonarcloud
