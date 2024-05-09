@@ -25,11 +25,9 @@
                 
             
         }
-        withCredentials([file(credentialsId: 'npmrc-cred', variable: 'npmrc')]) {
+        withCredentials([file(credentialsId: 'npmrc-cred', variable: 'my.npmrc')]) {
        // some block
-         sh "npm install --user-config $npmrc --loglevel verbose"  
-
-         sh "npm publish --user-config $npmrc --loglevel verbose"  
+         sh "npm publish --user-config $my.npmrc --loglevel verbose"  
 }
 // test sonarcloud
     }
