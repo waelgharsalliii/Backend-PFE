@@ -21,13 +21,14 @@
         stage("Build") {
             steps {
                 sh'npm run build'
-            }
-                
-            
+            }   
         }
+        stage("publish"){
+                steps{
         withCredentials([file(credentialsId: 'npmrc-cred', variable: 'my.npmrc')]) {
        // some block
-         sh "npm publish --user-config $my.npmrc --loglevel verbose"  
+        sh "npm publish --user-config $my.npmrc --loglevel verbose"  
+        }}
 }
 // test sonarcloud
     }
