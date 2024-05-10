@@ -20,12 +20,10 @@
         }
                stage('publish') {
                    steps {                     
-   // Use the npmrc file directly without the --userconfig option
-                withCredentials([file(credentialsId: 'npm-cred', variable: 'mynpmrc')]) {
-                    // Copy the npmrc file to the workspace
-                    sh 'cp $mynpmrc .npmrc'
-                    // Publish using the copied npmrc file
-                    sh 'npm publish --loglevel verbose'                     }
+ // Set the authentication token in .npmrc
+                withCredentials([file(credentialsId: 'npm-cred', variable: 'npmAuthToken')]) {
+                    sh 'echo "//192.168.1.206:8081/repository/npm-hosted-repository/:_authToken=${npmAuthToken}" > /home/wael/.npmrc'
+                    sh 'npm publish --loglevel verbose'                   }
                   }
                }  
 // test sonarcloud
