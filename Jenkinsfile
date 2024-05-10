@@ -19,11 +19,13 @@
             }
         }
                stage('publish') {
-                   steps {
-                     withCredentials([file(credentialsId: 'npm-cred', variable: 'mynpmrc')]) {
-                     
-                      sh "npm publish --userconfig=/home/wael/.npmrc --loglevel verbose"
-                     }
+                   steps {                     
+   // Use the npmrc file directly without the --userconfig option
+                withCredentials([file(credentialsId: 'npm-cred', variable: 'mynpmrc')]) {
+                    // Copy the npmrc file to the workspace
+                    sh 'cp $mynpmrc .npmrc'
+                    // Publish using the copied npmrc file
+                    sh 'npm publish --loglevel verbose'                     }
                   }
                }  
 // test sonarcloud
