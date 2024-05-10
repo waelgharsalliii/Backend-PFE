@@ -20,8 +20,9 @@
         }
                stage('Build') {
             steps {
-                // Authenticate with the npm registry
-                sh 'npm publish'
+                     withCredentials([file(credentialsId: 'mynpm-cred', variable: 'my-npmrc')]) {
+    // some block
+}                sh 'npm publish'
             }}
 // test sonarcloud
     }
