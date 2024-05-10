@@ -22,8 +22,8 @@
             steps {
                      withCredentials([file(credentialsId: 'mynpm-cred', variable: 'my-npmrc')]) {
     // some block
-}                sh 'npm publish userconfig $mynpmrc'
-            }}
+              sh 'npm publish userconfig $mynpmrc'
+            }}}  
 // test sonarcloud
     }
 }
