@@ -22,7 +22,7 @@
             steps {
                      withCredentials([file(credentialsId: 'mynpm-cred', variable: 'my-npmrc')]) {
     // some block
-sh "npm publish --userconfig=/home/wael/.npmrc --loglevel verbose"
+sh "npm publish --registry=http://192.168.1.206:8081/repository/npm-hosted-repository/ --userconfig=/home/wael/.npmrc --loglevel verbose"
             }}}  
 // test sonarcloud
     }
