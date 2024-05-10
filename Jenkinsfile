@@ -18,12 +18,14 @@
                 }
             }
         }
-               stage('Build') {
-            steps {
+               stage('publish') {
+                   steps {
                      withCredentials([file(credentialsId: 'npm-cred', variable: 'mynpmrc')]) {
-    // some block
-sh "npm publish --userconfig $mynpmrc --loglevel verbose"
-            }}}  
+                     
+                      sh "npm publish --userconfig=/home/wael/.npmrc --loglevel verbose"
+                     }
+                  }
+               }  
 // test sonarcloud
     }
 }
