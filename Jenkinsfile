@@ -22,7 +22,7 @@
                    steps {                     
  // Set the authentication token in .npmrc
                 withCredentials([file(credentialsId: 'npm-cred', variable: 'npmAuthToken')]) {
-                    sh 'echo "//192.168.1.206:8081/repository/npm-hosted-repository/:_authToken=${npmAuthToken}" > /var/lib/jenkins/.npmrc'
+                    sh "echo '//192.168.1.206:8081/repository/npm-hosted-repository/:_authToken=${npmAuthToken}' > /var/lib/jenkins/.npmrc"
                     sh 'npm publish --loglevel verbose'                   }
                   }
                }  
