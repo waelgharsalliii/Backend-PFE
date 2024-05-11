@@ -22,10 +22,11 @@
                    steps {                     
         // Publish package to Nexus repository
         withCredentials([file(credentialsId: 'npm-cred', variable: 'npmAuthTokenFile')]) {
-            sh '''
-                   echo "//${'http://192.168.1.206:8081/repository/npm-hosted-repository/'}:_authToken=$(cat ${npmAuthTokenFile})" > .npmrc
-                   npm publish --loglevel verbose
-              '''
+         sh '''
+    echo "//${'http://192.168.1.206:8081/repository/npm-hosted-repository/'}:_authToken=$(cat ${env.npmAuthTokenFile})" > .npmrc
+    npm publish --loglevel verbose
+'''
+
         }
               }
                   }
