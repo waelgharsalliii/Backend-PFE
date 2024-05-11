@@ -20,10 +20,14 @@
         }
                stage('publish') {
                    steps {                     
- // Set the authentication token in .npmrc
-                withCredentials([file(credentialsId: 'npm-cred', variable: 'npmAuthToken')]) {
-                    sh "echo '//192.168.1.206:8081/repository/npm-hosted-repository/:_authToken= /home/wael/.npmrc' > /var/lib/jenkins/.npmrc"
-                    sh 'npm publish '                   }
+        // Publish package to Nexus repository
+        withCredentials([file(credentialsId: 'npm-cred', variable: 'npmAuthTokenFile')]) {
+            sh '''
+                   echo "//${'http://192.168.1.206:8081/repository/npm-hosted-repository/'}:_authToken=$(cat ${npmAuthTokenFile})" > .npmrc
+                   npm publish --loglevel verbose
+              '''
+        }
+              }
                   }
                }  
 // test sonarcloud
