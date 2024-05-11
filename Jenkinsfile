@@ -21,8 +21,8 @@
                       stage('publish') {
             steps {                     
                 // Publish package to Nexus repository
-                     withCredentials([file(credentialsId: 'npm-cred', variable: 'npmAuthTokenFile')]) {
-                         sh "npm publish --userconfig $npmAuthTokenFile --loglevel verbose"
+                     withCredentials([file(credentialsId: 'npm-cred', variable: '')]) {
+                         sh "npm publish --userconfig --loglevel verbose"
                          
                      }
 
