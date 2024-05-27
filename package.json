@@ -36,7 +36,7 @@
     "twig": "^1.16.0"
   },
   "publishConfig": {
-    "registry": "http://192.168.1.206:8081/repository/backend-npm-hosted-repo/"
+    "registry": "http://localhost:8081/repository/backend-npm-hosted-repo/"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
