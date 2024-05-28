@@ -21,7 +21,7 @@
       stage('Build') {
             steps {
                 sh 'npm run start'
-            }
+            }}
                       stage('publish') {
             steps {                     
                 // Publish package to Nexus repository
