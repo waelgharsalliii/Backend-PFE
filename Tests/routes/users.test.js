@@ -23,7 +23,7 @@ afterAll(() => {
     const response = await supertest(app).get('/');
 
     expect(response.status).toBe(200)
-  }, 300000); // Increase timeout to 10 seconds
+  }, 10000); // Increase timeout to 10 seconds
   
   // Test route for POST /add
   it('should respond with status 201 for POST /add', async () => {
