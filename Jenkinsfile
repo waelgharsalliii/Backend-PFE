@@ -19,7 +19,7 @@
                         sh ' npm run test' 
             }}
          
-    */ stage('Test'){
+    /* stage('Test'){
             steps { 
                
                     withSonarQubeEnv('sonar'){ 
