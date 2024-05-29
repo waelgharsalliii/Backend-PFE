@@ -10,7 +10,7 @@
      stage('build') { 
          steps{
             
-                nodejs (nodeJSInstallationName: 'NodeJs20.11.0'){ 
+                nodejs (nodeJSInstallationName: 'NodeJs:20.11.0'){ 
                     sh 'npm install' // or 'yarn install' if you're using yarn 
                 }}}
      
