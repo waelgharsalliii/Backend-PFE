@@ -37,11 +37,9 @@
             steps {                     
                 // Publish package to Nexus repository
                      withCredentials([file(credentialsId: 'nexus-cred', variable: 'mynpmrc')]) {
-<<<<<<< HEAD
+
                          sh "npm publish --userconfig $mynpmrc --loglevel verbose"
-=======
-                         sh 'npm publish --userconfig $mynpmrc --loglevel verbose'
->>>>>>> aba77eccf48046501e1d87b92ee3e1815dd4282c
+
                          
                      }
 
