@@ -14,20 +14,24 @@
                     sh 'npm install' // or 'yarn install' if you're using yarn 
                 }}}
      
-       stage('Test'){
+      /* stage('Test'){
           steps{
             
                         sh 'npm run test' 
-            }}
+            }
+    }*/
          
-    /* stage('Test'){
-            steps { 
-               
+  stage('Test'){
+    steps { 
+              nodejs (nodeJSInstallationName: 'NodeJs'){     
                     withSonarQubeEnv('sonar'){ 
                         sh 'npm run sonar' 
                     } 
-                }}
-         */
+                }
+                      } 
+  }
+                      
+         
      
                       stage('publish') {
             steps {                     
