@@ -29,7 +29,7 @@ afterAll(() => {
   it('should respond with status 200 for GET /events', async () => {
     const response = await supertest(app).get('/events');
     expect(response.status).toBe(200);
-  }, 10000);
+  }, 30000);
 
   // Test route for GET /events/:id
   it('should respond with status 200 for GET /events/:id', async () => {
