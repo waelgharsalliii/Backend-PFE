@@ -15,9 +15,10 @@
                 }}}
      
          stage('Test'){
+          steps{
             
                         sh ' npm run test' 
-            }
+            }}
          
     /* stage('Test'){
             steps { 
