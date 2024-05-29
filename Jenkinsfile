@@ -7,22 +7,41 @@
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins-front-ssh', url: 'git@github.com:waelgharsalliii/Backend-PFE.git']]) 
             }
         }
-        stage('sonarqube analysis') { 
-            steps { 
+     stage('build') { 
+         steps{
+            
                 nodejs (nodeJSInstallationName: 'NodeJs'){ 
                     sh 'npm install' // or 'yarn install' if you're using yarn 
-                    withSonarQubeEnv('sonar'){ 
-                        sh ' npm run test' 
-                        sh 'npm run sonar' 
-                    }
-                }
+                }}}
+     
+      /* stage('Test'){
+          steps{
+            
+                        sh 'npm run test' 
             }
-        }
+    }*/
+         
+  stage('Test'){
+    steps { 
+              nodejs (nodeJSInstallationName: 'NodeJs'){     
+                    withSonarQubeEnv('sonar'){ 
+                        sh 'npm run sonar' 
+                    } 
+                }
+                      } 
+  }
+                      
+         
+     
                       stage('publish') {
             steps {                     
                 // Publish package to Nexus repository
                      withCredentials([file(credentialsId: 'nexus-cred', variable: 'mynpmrc')]) {
+<<<<<<< HEAD
                          sh "npm publish --userconfig $mynpmrc --loglevel verbose"
+=======
+                         sh 'npm publish --userconfig $mynpmrc --loglevel verbose'
+>>>>>>> aba77eccf48046501e1d87b92ee3e1815dd4282c
                          
                      }
 
