@@ -16,10 +16,11 @@
      
     stage('Test'){
           steps{
+             nodejs(nodeJSInstallationName: 'NodeJs') {
             
                    sh 'npm run test' 
             }
-    }
+    }}
          
   stage('Sonarqube'){
     steps { 
