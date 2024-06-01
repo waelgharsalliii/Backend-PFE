@@ -38,6 +38,22 @@
                 }
             }
         }
+     stage('Login to Docker Hub') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', passwordVariable: 'wael01234', usernameVariable: 'admin')]) {
+                        sh 'echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin'
+                    }
+                }
+            }
+        }
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    sh 'docker push waelgharsalli/backend-pfe:latest'
+                }
+            }
+        }
          
      
                       stage('publish') {
