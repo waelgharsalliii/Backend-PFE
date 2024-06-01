@@ -31,13 +31,13 @@
                 }
                       } 
   }
-                            stage('Build Docker Image') {
+           stage('Build Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.build("waelgharsalli/backend-pfe:latest")
+                    docker.build("waelgharsalli/backend-pfe")
                 }
             }
-        }  
+        }
          
      
                       stage('publish') {
