@@ -38,21 +38,16 @@
                 }
             }
         }
-     stage('Login to Docker Hub') {
+
+        stage('login and Push to Docker Hub') {
             steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', passwordVariable: 'wael01234', usernameVariable: 'waelgharsalli')]) {
-                        sh 'echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin'
-                    }
-                }
-            }
-        }
-        stage('Push to Docker Hub') {
-            steps {
-                script {
+               
+               
+                      sh "sudo docker login -u waelgharsalli -p wael01234"
+
                     sh 'docker push waelgharsalli/backend-pfe:latest'
                 }
-            }
+            
         }
          
      
