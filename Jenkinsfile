@@ -34,7 +34,7 @@
            stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("waelgharsalli/backend-pfe")
+                    docker.build("waelgharsalli/backend-pfe, "."")
                 }
             }
         }
