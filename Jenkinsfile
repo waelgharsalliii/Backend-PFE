@@ -41,6 +41,7 @@
 
      stage('Login and Push to Docker Hub') {
             steps {
+              script {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                     sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
 
@@ -49,6 +50,7 @@
                 }
             }
         }
+     }
 
          
      
