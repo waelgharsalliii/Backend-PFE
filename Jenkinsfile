@@ -39,17 +39,17 @@
             }
         }
 
-              stage('Login and Push to Docker Hub') {
+     stage('Login and Push to Docker Hub') {
             steps {
-                    withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'waelgharsalli', passwordVariable: 'wael01234')]) {
-                        sh 'echo $wael01234 | docker login -u $waelgharsalli --password-stdin'
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
 
-                        // Push the Docker image
-                        sh 'docker push waelgharsalli/backend-pfe:latest'
-                    }
-                
+                    // Push the Docker image
+                    sh 'docker push waelgharsalli/backend-pfe:latest'
+                }
             }
         }
+
          
      
                       stage('publish') {
