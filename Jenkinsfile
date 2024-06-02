@@ -33,21 +33,22 @@
   }
            stage('Build Docker Image') {
             steps {
-                script {
+                
                     sh 'docker build -t waelgharsalli/backend-pfe .'
-                }
+                
             }
         }
 
-        stage('login and Push to Docker Hub') {
+              stage('Login and Push to Docker Hub') {
             steps {
-               
-               
-                      sh "sudo docker login -u waelgharsalli -p wael01234"
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'waelgharsalli', passwordVariable: 'wael01234')]) {
+                        sh 'echo $wael01234 | docker login -u $waelgharsalli --password-stdin'
 
-                    sh 'docker push waelgharsalli/backend-pfe:latest'
-                }
-            
+                        // Push the Docker image
+                        sh 'docker push waelgharsalli/backend-pfe:latest'
+                    }
+                
+            }
         }
          
      
