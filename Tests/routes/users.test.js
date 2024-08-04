@@ -10,8 +10,7 @@ app.use(router);
 describe('User Routes', () => {
 
   beforeAll(() => {
-    mongoose.connect('mongodb://admin:wael01234@mongo:27017/catch-db?authSource=admin
-    networks:');
+    mongoose.connect('mongodb://admin:wael01234@mongo:27017/catch-db?authSource=admin');
 });
 
 afterAll(() => {
