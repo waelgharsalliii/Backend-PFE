@@ -23,14 +23,15 @@
                     sh 'npm install' // or 'yarn install' if you're using yarn 
                 }}}
      
-      /* stage('Test'){
+    stage('Test'){
           steps{
+             nodejs(nodeJSInstallationName: 'NodeJs') {
             
-                        sh 'npm run test' 
+                   sh 'npm run test' 
             }
-    }*/
+    }}
          
-  stage('Test'){
+  stage('Sonarqube'){
     steps { 
               nodejs (nodeJSInstallationName: 'NodeJs'){     
                     withSonarQubeEnv('sonar'){ 
@@ -39,18 +40,36 @@
                 }
                       } 
   }
-                      
+           stage('Build Docker Image') {
+            steps {
+                
+                    sh 'docker build -t waelgharsalli/backend-pfe .'
+                
+            }
+        }
+
+     stage('Login and Push to Docker Hub') {
+            steps {
+              script {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+
+                    // Push the Docker image
+                    sh 'docker push waelgharsalli/backend-pfe:latest'
+                }
+            }
+        }
+     }
+
          
      
                       stage('publish') {
             steps {                     
                 // Publish package to Nexus repository
                      withCredentials([file(credentialsId: 'nexus-cred', variable: 'mynpmrc')]) {
-<<<<<<< HEAD
+
                          sh "npm publish --userconfig $mynpmrc --loglevel verbose"
-=======
-                         sh 'npm publish --userconfig $mynpmrc --loglevel verbose'
->>>>>>> aba77eccf48046501e1d87b92ee3e1815dd4282c
+
                          
                      }
 
@@ -59,6 +78,6 @@
         
    
 
-// test sonarcloud
+// test sonarcloud///////////////
     }
 }
