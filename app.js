@@ -15,10 +15,10 @@ var paymentRouter = require('./routes/payment');
 var payEventRouter = require('./routes/PaymentEvent');
 var chatRouter = require('./routes/chatRoutes');
 
-//var connectDB = require('./database/db');
+var connectDB = require('./database/db');
 
-// Connect to MongoDB
-//connectDB();
+//Connect to MongoDB
+connectDB();
 
 var app = express();
 app.use(cors());
@@ -54,15 +54,19 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+  // Add the title variable
+  res.locals.title = 'Error';
+
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 const http = require('http').Server(app);
 const io = require('socket.io')(http, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin: "http://localhost:3100",
     // credentials: true,
   },
 });

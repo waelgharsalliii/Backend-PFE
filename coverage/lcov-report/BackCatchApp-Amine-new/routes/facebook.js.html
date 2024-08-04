@@ -228,7 +228,7 @@ passport.use(
     {
       clientID: '596195962421966',
       clientSecret: '7c8eb3914855c283844d3f2863502c34',
-      callbackURL: 'http://localhost:3001/auth/facebook/callback',
+      callbackURL: '${process.env.REACT_APP_API_URL}/auth/facebook/callback',
     },
 <span class="fstat-no" title="function not covered" >    as</span>ync function (accessToken, refreshToken, profile, cb) {
       const user = <span class="cstat-no" title="statement not covered" >await User.findOne({</span>

@@ -254,7 +254,7 @@ const createPayment = async (req, res) =&gt; {
     accept_card: true,
     amount: 5000,
     success_link: `http://localhost:3000/ValidatePayment`,
-    fail_link: `http://localhost:3001/fail/${req.params.clubId}/${req.params.userId}`,
+    fail_link: `${process.env.REACT_APP_API_URL}/fail/${req.params.clubId}/${req.params.userId}`,
     session_timeout_secs: 1200, 
     developer_tracking_id: '4422763e-4df5-4f25-aa17-0ee7541ccc76'
   };

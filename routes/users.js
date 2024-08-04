@@ -82,7 +82,7 @@ router.post('/signup', upload.single('profilePic'), async (req, res) => {
       from: 'hkyosri@gmail.com',
       to: user.email,
       subject: 'Verify your email address',
-      text: `Please click on this link to verify your email address: http://localhost:3001/users/verify-email/${user.verificationToken}`
+      text: `Please click on this link to verify your email address: ${process.env.REACT_APP_API_URL}/users/verify-email/${user.verificationToken}`
     };
 
      transporter.sendMail(mailOptions);

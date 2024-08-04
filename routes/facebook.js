@@ -11,7 +11,7 @@ passport.use(
     {
       clientID: '596195962421966',
       clientSecret: '7c8eb3914855c283844d3f2863502c34',
-      callbackURL: 'http://localhost:3001/auth/facebook/callback',
+      callbackURL: '${process.env.REACT_APP_API_URL}/auth/facebook/callback',
     },
     async function (accessToken, refreshToken, profile, cb) {
       const user = await User.findOne({

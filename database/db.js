@@ -1,13 +1,6 @@
-/*const mongoose = require('mongoose');
-const fs = require('fs');
-const path = require('path');
+const mongoose = require('mongoose');
 
-// Read the MongoDB URI from mongodb.json
-const configPath = path.join(__dirname, 'mongodb.json');
-const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-
-// Extract the URI
-const MONGO_URI = config.mongo.uri;
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://admin:wael01234@mongo:27017/catch-db?authSource=admin';
 
 const connectDB = async () => {
   try {
@@ -22,4 +15,4 @@ const connectDB = async () => {
   }
 };
 
-module.exports = connectDB;*/
+module.exports = connectDB;
