@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://admin:wael01234@mongo:27017/catch-db?authSource=admin';
+const MONGO_URI = process.env.MONGO_URI || 'admin:wael01234@localhost:27017/catch-db?authSource=admin';
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(MONGO_URI, {
+    await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
